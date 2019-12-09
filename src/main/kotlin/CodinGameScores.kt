@@ -19,6 +19,8 @@ import kotlin.math.pow
 
 private const val REMEMBER_ME_COOKIE_NAME = "rememberMe="
 private const val REMEMBER_ME_COOKIE_VALUE = "placeTheValueOfYourCodinGameRememberMeCookieHere!!!"
+private const val USERID = "placeYourCodinGameUserIdHere!!!"
+
 private val client = HttpClient.newBuilder().build()
 
 fun main() {
@@ -58,7 +60,7 @@ private fun retrieveMultiplayerGameIds(): List<String> {
 suspend fun retrieveGameDetails(prettyId: String): Game {
     val request = HttpRequest.newBuilder()
         .uri(URI.create("https://www.codingame.com/services/PuzzleRemoteService/findProgressByPrettyId"))
-        .POST(HttpRequest.BodyPublishers.ofString("""["$prettyId",2155687]"""))
+        .POST(HttpRequest.BodyPublishers.ofString("""["$prettyId",$USERID]"""))
         .header("Cookie", REMEMBER_ME_COOKIE_NAME + REMEMBER_ME_COOKIE_VALUE)
         .build()
 
