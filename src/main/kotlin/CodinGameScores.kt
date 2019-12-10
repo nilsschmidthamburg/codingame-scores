@@ -19,7 +19,7 @@ import kotlin.math.pow
 
 private const val REMEMBER_ME_COOKIE_NAME = "rememberMe="
 private const val REMEMBER_ME_COOKIE_VALUE = "placeTheValueOfYourCodinGameRememberMeCookieHere!!!"
-private const val USERID = "placeYourCodinGameUserIdHere!!!"
+private val USERID = REMEMBER_ME_COOKIE_VALUE.dropLast(32)
 
 private val client = HttpClient.newBuilder().build()
 
